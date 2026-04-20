@@ -51,6 +51,7 @@ namespace vi
 
         // 存储可调用对象的副本，确保 closure_ 存的是一份独立的、拥有所有权的拷贝，而不是别人的引用。
         // 避免悬空引用
+        // std::decay<Closure>作用是把带有引用 &、右值引用 && 或者 const 修饰符的类型，统统剥掉外衣，还原成最干净的“值类型”
         typename std::decay<Closure>::type closure_;
         // std::decay_t<Closure> closure_;
     };
