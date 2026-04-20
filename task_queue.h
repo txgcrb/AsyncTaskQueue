@@ -248,6 +248,7 @@ namespace vi
         }
 
         // test conflict windows 123
+        // test conflict
         //  SFINAE（Substitution Failure Is Not An Error，替换失败并非错误）
         //   class Closure：模板参数。不管你传进来的是什么，编译器都会把它的实际类型推导并赋值给 Closure。
         //   std::enable_if< 条件 >：类型萃取器，条件为真返回void，为假内部什么都不定义
