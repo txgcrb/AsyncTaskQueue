@@ -45,6 +45,7 @@ namespace vi
 
     bool TaskQueueManager::exist(const std::string &name)
     {
+        // find 的作用是寻找并返回一个迭代器（Iterator）,找到了，返回指向该元素的迭代器；没找到，返回 end()。
         return (m_queueMap.find(name) != m_queueMap.end());
     }
 
