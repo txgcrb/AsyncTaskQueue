@@ -38,6 +38,8 @@ namespace vi
         return impl_->postDelayedTask(std::move(task), milliseconds);
     }
 
+    // 通过基类指针管理派生类对象（多态），统一接口：如果以后增加了 TaskQueueLinux 这种子类，
+    // 这行代码只需要把 new TaskQueueSTD 换成 new TaskQueueLinux，而整个 std::unique_ptr 的类型完全不需要变。
     std::unique_ptr<TaskQueue> TaskQueue::create(std::string_view name)
     {
         return std::make_unique<TaskQueue>(std::unique_ptr<TaskQueueBase, TaskQueueDeleter>(new TaskQueueSTD(name)));

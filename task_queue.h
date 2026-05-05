@@ -98,6 +98,7 @@ namespace vi
     //
     // A note on destruction:
     //
+    // TaskQueue 被设计为一个**句柄（Handle）**类，本身不持有重型资源（如线程、锁），它只持有一个指向 TaskQueueBase 的指针 impl_。
     class TaskQueue
     {
     public:

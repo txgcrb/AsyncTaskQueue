@@ -58,6 +58,7 @@ namespace vi
     TaskQueue *TaskQueueManager::queue(const std::string &name)
     {
         std::unique_lock<std::mutex> lock(m_mutex);
+        // get() 方法会返回该智能指针内部维护的裸指针
         return exist(name) ? m_queueMap[name].get() : nullptr;
     }
 
