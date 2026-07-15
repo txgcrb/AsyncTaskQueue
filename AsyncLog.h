@@ -71,6 +71,7 @@ namespace AsyncLog
 
         // 递归展开可变参数的旧写法。当前 AsyncWrite 使用 C++17 折叠表达式；
         // 如果要适配较早的语言标准，可在 AsyncWrite 中改用这个重载组。
+   //利用可变参数模板递归展开，把任意数量、任意类型的参数逐个包装成 std::any 并存入 task->_logdatas
         template <typename Arg, typename... Args>
         void TaskEnque(std::shared_ptr<LogTask> task, Arg &&arg, Args &&...args)
         {
