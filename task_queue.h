@@ -252,7 +252,7 @@ namespace vi
         // test conflict
         //  SFINAE（Substitution Failure Is Not An Error，替换失败并非错误）
         //   class Closure：模板参数。不管你传进来的是什么，编译器都会把它的实际类型推导并赋值给 Closure。
-        //   std::enable_if< 条件 >：类型萃取器，条件为真返回void，为假内部什么都不定义
+        //   std::enable_if< 条件 >：类型萃取器，条件为真返回void，为假内部什么都不定义（c++20用concept和requires更直观）
         //! std::is_convertible<Closure, std::unique_ptr<QueuedTask>>::value
         // 判断 Closure 类型是否不能转换为 std::unique_ptr<QueuedTask>类型：如果为 true（不能转换），这个模板会被启用；如果为 false（可以转换），这个模板会被SFINAE排除。
         // typename ... ::type：告诉编译器 ... 为数据类型，前条件为真type为void，前条件为假无type报错（替换失败）
