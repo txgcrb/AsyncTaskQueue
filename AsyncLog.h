@@ -163,10 +163,10 @@ namespace AsyncLog
             // std::any 擦除了静态类型，消费时需根据 type() 恢复具体类型。
             // 当前只支持以下六类；bool、long、自定义类型等会转换失败，该参数
             // 随后不会出现在最终日志中。
-            std::ostringstream ss;
+            std::ostringstream ss;//创建一个字符串流。
             if (data.type() == typeid(int))
             {
-                ss << std::any_cast<int>(data);
+                ss << std::any_cast<int>(data);//把 std::any 里面的值取出来，并且当成 int。
             }
             else if (data.type() == typeid(float))
             {
