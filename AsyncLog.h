@@ -243,10 +243,13 @@ namespace AsyncLog
                 {
                     return;
                 }
-
+                // 查找并替换 "{}"
                 size_t placeholderPos = result.find(placeholder, pos);
                 if (placeholderPos != std::string::npos)
                 {
+                     // “替换 + 长度自适应”，不是 memcpy。
+                    // 这里不使用 std::string::replace(pos, 2, str_replement) 的原因是，
+                    // 如果 str_replement 比 2 长，replace 会把原来的 2 个字符覆盖掉，导致后续内容被截断。
                     result.replace(placeholderPos, placeholder.length(), str_replement);
                     pos = placeholderPos + str_replement.length();
                 }
