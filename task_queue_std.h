@@ -70,7 +70,7 @@ private:
     using Millis     = std::chrono::milliseconds;
 
     // 用于标识任务的顺序ID类型
-    using OrderId = uint64_t;
+    using   OrderId = uint64_t;
 
     // 任务ID类型
     using TaskId = TaskQueueBase::TaskId;
@@ -84,6 +84,7 @@ private:
 
         // 比较运算符，用于在map中排序
         // 优先按执行时间排序，时间相同则按顺序ID排序
+        //std::tie 用于将一组左值打包成一个 tuple 引用集合（不拷贝）
         bool operator<(const DelayedEntryTimeout& o) const {
             return std::tie(next_fire_at_, order_) < std::tie(o.next_fire_at_, o.order_);
         }
